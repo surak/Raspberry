@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script depends on "fswebcam", in order to capture pictures. 
+# the cronjob would be something like
+# * * * * * ~/Devel/Raspberry/webcam/timelapse.sh 2>&1
+
 DATE=$(date +"%Y-%m-%d_%H%M")
 
 fswebcam -r 1280x720 --no-banner ~/Devel/Raspberry/webcam/$DATE.jpg
