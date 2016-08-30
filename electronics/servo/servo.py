@@ -1,29 +1,46 @@
-from Tkinter import *
+
 import RPi.GPIO as GPIO
 import time
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 pwm = GPIO.PWM(18, 100)
 pwm.start(5)
-
-class App:
-
-    def __init__(self, master):
-        frame = Frame(master)
-        frame.pack()
-        scale = Scale(frame, from_=0, to=180,
-              orient=HORIZONTAL, command=self.update)
-        scale.grid(row=0)
+#pwm.ChangeDutyCycle( 90.0/10+2.5 )
 
 
-    def update(self, angle):
-        duty = float(angle) / 10.0 + 2.5
-        pwm.ChangeDutyCycle(duty)
+#for i in range(0,180):
+#   time.sleep(0.2)
+#   pwm.ChangeDutyCycle(i/10.0+2.5)
+#   print i
+ 
 
-root = Tk()
-root.wm_title('Servo Control')
-app = App(root)
-root.geometry("200x50+0+0")
-root.mainloop()
+pwm.ChangeDutyCycle( 0/10+2.5 )
+print "Zero degrees"
+time.sleep(2)
 
+
+pwm.ChangeDutyCycle( 45/10+2.5 )
+print "45 degrees"
+time.sleep(2)
+
+
+pwm.ChangeDutyCycle( 60/10+2.5 )
+print "60 degrees"
+time.sleep(2)
+
+
+pwm.ChangeDutyCycle( 90/10+2.5 )
+print "90 degrees"
+time.sleep(2)
+
+pwm.ChangeDutyCycle( 120/10+2.5 )
+print "120 degrees"
+time.sleep(2)
+
+pwm.ChangeDutyCycle( 150/10+2.5 )
+print "150 degrees"
+time.sleep(2)
+
+pwm.ChangeDutyCycle( 180/10+2.5 )
+print "180 degrees"
+time.sleep(2)
