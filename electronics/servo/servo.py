@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BCM)
@@ -40,4 +41,3 @@ while True:
 
    pwm.ChangeDutyCycle( 180/10+2.5 )
    print "180 degrees"
-   time.sleep(1)
