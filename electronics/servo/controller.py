@@ -12,12 +12,12 @@ GPIO.setwarnings(False)
 GPIO.setup(12, GPIO.OUT)
 pwm = GPIO.PWM(12, 100)
 pwm.start(5)
+global servoAngle
 
 # Configure DC
 MotorPin1   = 11    # pin11
 MotorPin2   = 16    # pin12
 MotorEnable = 13    # pin13
-# GPIO vs BCM
 GPIO.setup(MotorPin1, GPIO.OUT)   # mode --- output
 GPIO.setup(MotorPin2, GPIO.OUT)
 GPIO.setup(MotorEnable, GPIO.OUT)
@@ -103,24 +103,34 @@ def PygameHandler(events):
             else:
                 moveLeft = False
                 moveRight = False
+servoAngle=12.0
+increment=0.0
 try:
     print 'Press [ESC] to quit'
     # Loop indefinitely
     while True:
         # Get the currently pressed keys on the keyboard
         PygameHandler(pygame.event.get())
+        servoAngle=servoAngle+increment
+        if servoAngle <= 21.0 and servoAngle >= 2.0:
+            pwm.ChangeDutyCycle( servoAngle )
+        else:
+            increment=0.0
         if hadEvent:
             # Keys have changed, generate the command list based on keys
             hadEvent = False
             if moveQuit:
                 break
             elif moveLeft:
-                pwm.ChangeDutyCycle( 180/10+2.5 )
-                print "180 degrees"
+                if servoAngle < 21.0:
+                    increment=1
+                    print "servoAngle=", servoAngle+increment
             elif moveRight:
-                pwm.ChangeDutyCycle( 2.5 )
-                print "0 degrees"
+                if servoAngle > 2.0:
+                    increment=-1
+                    print "servoAngle=", servoAngle+increment
             elif moveUp:
+                #servoAngle=12.0
                 GPIO.output(MotorEnable, GPIO.HIGH) # motor driver enable
 		GPIO.output(MotorPin1, GPIO.HIGH)  # clockwise
 		GPIO.output(MotorPin2, GPIO.LOW)
@@ -132,6 +142,8 @@ try:
 		print "Anticlockwise"
             else:
                 print "Something else"
+                increment=0.0
+                print "servoAngle=", servoAngle
                 GPIO.output(MotorEnable, GPIO.LOW) # motor stop
         # Wait for the interval period
         time.sleep(interval)
