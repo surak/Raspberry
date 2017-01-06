@@ -2,16 +2,16 @@
 # coding: Latin-1
 
 # Load library functions we want
-import time
-import pygame
+import time, os, pygame
 import RPi.GPIO as GPIO
 from oled.device import ssd1306, sh1106
 from oled.render import canvas
 from PIL import ImageDraw, ImageFont
 
+
 # oled stuff
-font = ImageFont.truetype('redalert.ttf', 12)
 oled = ssd1306(port=1, address=0x3C)
+font = ImageFont.truetype('redalert.ttf', 20)
 
 GPIO.setmode(GPIO.BOARD) # Set pins by location
 GPIO.setwarnings(False)
@@ -35,9 +35,12 @@ axisUpDown = 1                          # Joystick axis to read for up / down po
 axisUpDownInverted = False              # Set this to True if up and down appear to be swapped
 axisLeftRight = 0                       # Joystick axis to read for left / right position
 axisLeftRightInverted = False           # Set this to True if left and right appear to be swapped
-interval = 0.1                          # Time between keyboard updates in seconds, smaller responds faster but uses more processor time
+interval = 0.00                          # Time between keyboard updates in seconds, smaller responds faster but uses more processor time
 
 # Setup pygame and key states
+os.environ["SDL_VIDEODRIVER"] = "dummy" # The idea is that it won't fail 
+					# without X server - doesn't really 
+					# work without sudo
 global hadEvent
 global moveUp
 global moveDown
@@ -117,11 +120,12 @@ def PygameHandler(events):
                 moveRight = False
 servoAngle=12.0
 increment=0.0
-message="Hello!"
+message="Hi! ", servoAngle
 try:
     print 'Press [ESC] to quit'
     # Loop indefinitely
     while True:
+	message=str(servoAngle)
         # Get the currently pressed keys on the keyboard
         PygameHandler(pygame.event.get())
         servoAngle=servoAngle+increment
@@ -164,6 +168,7 @@ try:
     # Disable all drives
     #MorOff()
     GPIO.output(MotorEnable, GPIO.LOW) # motor stop
+
 except KeyboardInterrupt:
     # CTRL+C exit, disable all drives
     print "Tchau"
