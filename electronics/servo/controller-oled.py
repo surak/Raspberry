@@ -11,7 +11,7 @@ from PIL import ImageDraw, ImageFont
 
 # oled stuff
 oled = ssd1306(port=1, address=0x3C)
-font = ImageFont.truetype('redalert.ttf', 20)
+font = ImageFont.truetype('redalert.ttf', 60)
 
 GPIO.setmode(GPIO.BOARD) # Set pins by location
 GPIO.setwarnings(False)
