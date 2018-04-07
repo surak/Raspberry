@@ -7,4 +7,9 @@ The colored one looks better, but has a missing line of pixels between yellow an
 
 The black and white one is exactly 128x64 and it's cheaper: https://www.aliexpress.com/item/Free-shipping-White-Yellow-blue-double-color-128X64-OLED-LCD-LED-Display-Module-For-Arduino-0/32233334632.html
 
+To install, first install the oled library:
 
+'''
+sudo apt-get install python-dev python-pip libfreetype6-dev libjpeg-dev build-essential
+sudo -H pip install --upgrade luma.oled
+'''
