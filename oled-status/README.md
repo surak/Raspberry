@@ -10,6 +10,6 @@ The black and white one is exactly 128x64 and it's cheaper: https://www.aliexpre
 To install, first install the oled library:
 
 '''
-sudo apt-get install python-dev python-pip libfreetype6-dev libjpeg-dev build-essential
-sudo -H pip install --upgrade luma.oled
+sudo apt-get install python-psutil python-dev python-pip libfreetype6-dev libjpeg-dev build-essential
+sudo -H pip install --upgrade --force-reinstall --ignore-installed luma.oled
 '''

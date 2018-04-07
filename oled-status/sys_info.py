@@ -13,10 +13,11 @@ import socket
 if os.name != 'posix':
     sys.exit('platform not supported')
 import psutil
+import time
 
 from datetime import datetime
-from oled.device import ssd1306, sh1106
-from oled.render import canvas
+from luma.oled.device import ssd1306, sh1106
+from luma.core.render import canvas
 from PIL import ImageDraw, ImageFont
 
 # TODO: custom font bitmaps for up/down arrows
@@ -77,12 +78,14 @@ def stats(oled):
         draw.text((0, 00), myip('wlan0'), font=font2, fill=255)
         draw.text((0, 14), mem_usage(), font=font2, fill=255)
         draw.text((0, 26), disk_usage('/'), font=font2, fill=255)
-        #draw.text((0, 38), network('wlan0'), font=font2, fill=255)
+        draw.text((0, 38), network('wlan0'), font=font2, fill=255)
         draw.text((0, 50), cpu_usage(), font=font2, fill=255)
 
 def main():
     oled = ssd1306(port=1, address=0x3C)
-    stats(oled)
+    while True:
+	stats(oled)
+        time.sleep(5)
 
 if __name__ == "__main__":
     main()
