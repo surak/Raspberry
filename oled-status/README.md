@@ -10,6 +10,10 @@ The black and white one is exactly 128x64 and it's cheaper: https://www.aliexpre
 To install, first install the oled library:
 
 '''
-sudo apt-get install python-psutil python-dev python-pip libfreetype6-dev libjpeg-dev build-essential
-sudo -H pip install --upgrade --force-reinstall --ignore-installed luma.oled
+sudo apt-get install python3-dev libfreetype6-dev libjpeg-dev build-essential python3-psutil python3-pip python3-pillow libopenjp2-7-dev
+sudo -H pip3 install --upgrade --force-reinstall --ignore-installed luma.oled
 '''
+
+Then, add this to `/etc/rc.local`:
+
+`python3 [repo]/Raspberry/oled-status/sys_info.py &`

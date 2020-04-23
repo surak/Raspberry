@@ -84,8 +84,8 @@ def stats(oled):
 def main():
     oled = ssd1306(port=1, address=0x3C)
     while True:
-	stats(oled)
-        time.sleep(5)
+        stats(oled)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
