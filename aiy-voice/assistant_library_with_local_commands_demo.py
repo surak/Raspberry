@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# TODO: button control
+
 # Copyright 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -84,16 +87,16 @@ def play_music(name):
 def lower_volume():
     m = alsaaudio.Mixer()
     current_volume = m.getvolume()
-    print("Current volume is ",current_volume)
-    next_volume=(current_volume[0]-25) if current_volume[0] > 30 else 0
+    #print("Current volume is ",current_volume)
+    next_volume=(current_volume[0]-25) if current_volume[0] > 25 else 0
     m.setvolume(next_volume)
 
 def raise_volume():
     m = alsaaudio.Mixer()
     current_volume = m.getvolume()
-    print("Current volume is ", current_volume)
-    next_volume=current_volume[0]+25 if current_volume[0] < 70 else 100
-    print("Next volume is ",next_volume)
+    #print("Current volume is ", current_volume)
+    next_volume=current_volume[0]+25 if current_volume[0] < 75 else 100
+    #print("Next volume is ",next_volume)
     m.setvolume(next_volume)
 
 def process_event(assistant, led, event):
