@@ -84,12 +84,17 @@ def play_music(name):
 def lower_volume():
     m = alsaaudio.Mixer()
     current_volume = m.getvolume()
-    m.setvolume(current_volume[0]-30)
+    print("Current volume is ",current_volume)
+    next_volume=(current_volume[0]-25) if current_volume[0] > 30 else 0
+    m.setvolume(next_volume)
 
 def raise_volume():
     m = alsaaudio.Mixer()
     current_volume = m.getvolume()
-    m.setvolume(current_volume[0]+30)
+    print("Current volume is ", current_volume)
+    next_volume=current_volume[0]+25 if current_volume[0] < 70 else 100
+    print("Next volume is ",next_volume)
+    m.setvolume(next_volume)
 
 def process_event(assistant, led, event):
     logging.info(event)
