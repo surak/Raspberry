@@ -13,3 +13,10 @@ The default is 16 because I want it to.
 
 
 To install the rpi.GPIO module, you need to do a `sudo apt install python3-rpi.gpio`
+
+
+# Day mode
+![Day mode](https://github.com/surak/Raspberry/blob/master/ir-cut/ir-cut.jpg)
+
+# Night mode
+![Day mode](https://github.com/surak/Raspberry/blob/master/ir-cut/with-ir.jpg)
