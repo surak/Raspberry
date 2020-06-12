@@ -20,3 +20,8 @@ To install the rpi.GPIO module, you need to do a `sudo apt install python3-rpi.g
 
 # Night mode
 ![Day mode](https://github.com/surak/Raspberry/blob/master/ir-cut/with-ir.jpg)
+
+This code was made for my birdwatcher:
+
+![Raspberry pi with camera and cd](https://github.com/surak/Raspberry/blob/master/ir-cut/IMG_8413.jpeg)
+![Raspberry pi](https://github.com/surak/Raspberry/blob/master/ir-cut/IMG_8414.jpeg)
