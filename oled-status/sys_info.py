@@ -73,7 +73,7 @@ def myip(iface):
 
 def stats(oled):
     font = ImageFont.load_default()
-    font2 = ImageFont.truetype('c-and-c.ttf', 12)
+    font2 = ImageFont.truetype('./c-and-c.ttf', 12)
     with canvas(oled) as draw:
         draw.text((0, 00), myip('wlan0'), font=font2, fill=255)
         draw.text((0, 14), mem_usage(), font=font2, fill=255)
@@ -88,4 +88,7 @@ def main():
         time.sleep(10)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
