@@ -82,7 +82,7 @@ def stats(oled):
         draw.text((0, 50), cpu_usage(), font=font2, fill=255)
 
 def main():
-    oled = ssd1306(port=1, address=0x3C)
+    oled = ssd1306(port=1, address=0x3C, rotate=2)
     while True:
         stats(oled)
         time.sleep(10)
