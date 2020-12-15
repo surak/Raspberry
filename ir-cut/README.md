@@ -25,3 +25,11 @@ This code was made for my birdwatcher:
 
 ![Raspberry pi with camera and cd](https://github.com/surak/Raspberry/blob/master/ir-cut/IMG_8413.jpeg)
 ![Raspberry pi](https://github.com/surak/Raspberry/blob/master/ir-cut/IMG_8414.jpeg)
+
+Add this to the crontab to turn daylight filter mode at 5am, and night mode at 22 to your crontab with `crontab -e`:
+
+```
+MAILTO=""
+0 5 * * *  /home/pi/Devel/Raspberry/ir-cut/camera-ircut.py -m day
+0 22 * * *  /home/pi/Devel/Raspberry/ir-cut/camera-ircut.py -m night
+```
